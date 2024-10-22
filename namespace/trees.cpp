@@ -17,10 +17,10 @@ namespace trees {
  
     public:
         i32 n; vector<Node> segtree;
-        GenericSegmentTree(i32 n, T base = T()) :
-            identity(base), n(n), segtree(4 * n) {}
-        GenericSegmentTree(vector<T>& arr, T base = T()) : 
-            identity(base), n(arr.size()), segtree(4 * arr.size()) { buildTree(arr, 0, 0, n - 1); }
+        GenericSegmentTree(i32 n, T identity = T()) :
+            identity(identity), n(n), segtree( 4 * n, Node( identity ) ) {}
+        GenericSegmentTree(vector<T>& arr, T identity = T()) : 
+            identity(identity), n(arr.size()), segtree( 4 * arr.size(), Node( identity ) ) { buildTree(arr, 0, 0, n - 1); }
  
     private:
         void buildTree(vector<T>& arr, i32 root, i32 left, i32 right) {
