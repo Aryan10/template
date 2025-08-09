@@ -2,22 +2,7 @@
 
 My personal C++ template library for competitive programming, containing optimized implementations of essential algorithms and data structures.
 
-## 📁 Repository Structure
-
-```
-template/
-├── include/              # Algorithm implementations organized by category
-│   ├── graph/           # Graph algorithms and data structures
-│   ├── math/            # Mathematical algorithms and number theory
-│   ├── ranges/          # Range query data structures
-│   ├── string/          # String processing algorithms
-│   ├── tree/            # Tree algorithms and decompositions
-│   └── utility/         # Common utilities and macros
-├── src/                 # Platform-specific template files
-│   ├── codeforces.cpp   # Codeforces contest template
-│   └── leetcode.cpp     # LeetCode problem template
-└── old/                 # Legacy implementations for reference
-```
+I also made an [extension](https://github.com/Aryan10/regionfold) to use with to auto fold template implementations
 
 ## 📚 Modules
 
