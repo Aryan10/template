@@ -34,7 +34,8 @@ void print(Args&&... args) {
 
 template <typename... Args>
 void println(Args&&... args) {
-    print(args..., '\n');
+    ((cout << args << ' '), ...);
+    cout << '\n';
 }
 
 #ifndef ONLINE_JUDGE

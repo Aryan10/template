@@ -27,7 +27,7 @@ template <Container C> ostream& operator<<(std::ostream& os, const C& c) { for (
 
 /* PRINT & DEBUG */
 template<typename... Args> void print(Args&&... args) { ((cout << args << ' '), ...); }
-template<typename... Args> void println(Args&&... args) { print(args..., '\n'); }
+template<typename... Args> void println(Args&&... args) { ((cout << args << ' '), ...); cout << '\n'; }
 #ifndef ONLINE_JUDGE
 template<typename... Args> void debug(Args&&... args) { ((cerr << args << ' '), ...); cerr << '\n'; }
 #endif
