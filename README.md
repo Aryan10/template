@@ -1,17 +1,17 @@
 # Competitive Programming Template
 
-My personal C++ template library for competitive programming, containing optimized implementations of essential algorithms and data structures.
+A modular, object-oriented and modern C++ template library for competitive programming, containing decently optimized implementations of essential algorithms, data structures and code snippets for utility.
 
-I also made an [extension](https://github.com/Aryan10/regionfold) to use with to auto fold template implementations
+I also made an [extension](https://github.com/Aryan10/regionfold) to use with to auto fold template implementations.
 
 ## 📚 Modules
 
-- **`math/`** - Essential mathematical algorithms including combinatorics, number theory, matrix operations, and bit manipulation techniques
-- **`graph/`** - Comprehensive graph algorithms for connectivity, flow problems, shortest paths, and advanced graph operations  
-- **`ranges/`** - Efficient data structures for range queries including segment trees, Fenwick trees, and square root decomposition
-- **`string/`** - String processing algorithms for pattern matching, hashing, palindrome detection, and text analysis
-- **`tree/`** - Specialized tree algorithms including LCA queries, tree decomposition, and hierarchical problem solutions
-- **`utility/`** - Essential utilities with common macros, optimized I/O, custom data structures, and competitive programming helpers
+- **`math/`** - Mathematical algorithms including combinatorics, number theory, matrix operations, and bit manipulation techniques
+- **`graph/`** - Graph algorithms for connectivity, flow problems, shortest paths, and advanced graph operations  
+- **`ranges/`** - Data structures for range queries including segment trees, Fenwick trees, and square root decomposition
+- **`string/`** - String processing algorithms for pattern matching, hashing, palindrome detection, z-function etc.
+- **`tree/`** - Tree algorithms including LCA queries, tree decomposition, heavy light decomposition etc.
+- **`utility/`** - Essential utilities with common macros, template I/O, hidden data structures, and competitive programming helpers
 
 ## 🤝 Contributing
 

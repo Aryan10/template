@@ -26,3 +26,21 @@ ostream& operator<<(ostream& os, const C& c) {
         os << x << ' ';
     return os;
 }
+
+template <typename... Args>
+void print(Args&&... args) {
+    ((cout << args << ' '), ...);
+}
+
+template <typename... Args>
+void println(Args&&... args) {
+    print(args..., '\n');
+}
+
+#ifndef ONLINE_JUDGE
+template <typename... Args>
+void debug(Args&&... args) {
+    ((cerr << args << ' '), ...);
+    cerr << '\n';
+}
+#endif
