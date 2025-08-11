@@ -8,33 +8,47 @@ struct MoAlgorithm {
         virtual void remove(int) = 0;
         virtual T query(void) = 0;
     };
-    
+
     struct Query {
-        int l, r, idx, block;
-
-        Query(int l, int r, int idx, int block_size)
-            : l(l), r(r), idx(idx), block(l / block_size) {}
-
-        bool operator<(const Query& other) const {
-            if (block != other.block) return block < other.block;
-            return (block & 1) ? r > other.r : r < other.r;
-        }
+        int l, r, idx;
     };
 
-    const int block_size;
+    void push_query(int l, int r) {
+        queries.push_back({l, r, (int)queries.size()});
+    }
+
     vector<Query> queries;
+    vector<int> block_id;
     Struct& ds;
 
-    MoAlgorithm(int n, Struct& ds) : block_size((int)sqrt(n) + 1), ds(ds) {}
+    MoAlgorithm(int n, Struct& ds) : block_id(n), ds(ds) {
+        int block_size = sqrt(n) + 1;
+        for (int i = 0; i < n; i++)
+            block_id[i] = i / block_size;
+    }
 
-    void push_query(int l, int r) {
-        queries.emplace_back(l, r, queries.size(), block_size);
+    /// Mo's algorithm with weighted block decomposition
+    MoAlgorithm(int n, Struct& ds, vector<int> const& weight) : block_id(n), ds(ds) {
+        int total_weight = accumulate(weight.begin(), weight.end(), 0);
+        int K = max((int)1, (int)sqrt(total_weight));
+        for (int i = 0, b = 0; i < n; b++) {
+            int tot = 0;
+            while (i < n && tot < K) {
+                tot += weight[i];
+                block_id[i++] = b;
+            }
+        }
     }
 
     vector<T> operator () () {
-        vector<T> answer(queries.size());
-        sort(queries.begin(), queries.end());
+        auto comparator = [&] (Query const& a, Query const& b) {
+            if (block_id[a.l] != block_id[b.l]) return block_id[a.l] < block_id[b.l];
+            return (block_id[a.l] & 1) ? (a.r > b.r) : (a.r < b.r);
+        };
 
+        vector<T> answer(queries.size());
+        sort(queries.begin(), queries.end(), comparator);
+            
         int cur_l = 0, cur_r = -1;
         for (auto const& q : queries) {
             while (cur_l > q.l) ds.add(--cur_l);
